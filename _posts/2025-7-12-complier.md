@@ -7,7 +7,7 @@ comments: true
 author: Puyuan Zhang
 mathjax: true
 ---
-注：因为github中数学公式的显示问题，这里把所有的数学符号`|`都置为`或`
+
 # 编译器原理笔记
 
 ## 目录
@@ -94,17 +94,17 @@ mathjax: true
 - 句柄：最左二层子树叶节点构成句柄
 
 ### 2.2.2 二义性
-- 文法的二义性：对一个文法，一个句型可以有不同种推导过程。避免二义文法的方法：优先级越高的越远离开始符号：例如四则运算文法：$E\rightarrow T 或 E+T, T\rightarrow F 或 T*F, F\rightarrow (E) 或 i$
+- 文法的二义性：对一个文法，一个句型可以有不同种推导过程。避免二义文法的方法：优先级越高的越远离开始符号：例如四则运算文法：$E\rightarrow T|E+T, T\rightarrow F|T*F, F\rightarrow (E)|i$
 - 语言的二义性，存在两个不同的文法$G$和$G'$，有$L(G)=L(G')$即该语言存在二义性。
 # 3 词法分析
-以正规式$(a 或 b)^*(aa 或 bb)(a 或 b)^*$为例进行词法分析
+以正规式$(a|b)^*(aa|bb)(a|b)^*$为例进行词法分析
 ## 3.1 步骤一：非确定有限自动机(NFA)单符化
 - 使初态、终态唯一：
 ![alt text](http://puyuanz.github.io/images/complier/image-1.png)
 - 箭弧单符化：
 ![alt text](http://puyuanz.github.io/images/complier/image-2.png)
 
-正规式$(a 或 b)^*(aa 或 bb)(a 或 b)^*$构造NFA如下：
+正规式$(a|b)^*(aa|bb)(a|b)^*$构造NFA如下：
 ![alt text](http://puyuanz.github.io/images/complier/image-3.png)
 ## 3.2 步骤二：非确定有限自动机(NFA)确定化
 ![alt text](http://puyuanz.github.io/images/complier/image-4.png)
@@ -119,9 +119,9 @@ mathjax: true
 # 4 语法分析
 ## 4.1 LL(1)分析
 ### 4.1.1 步骤1：消除左递归与左公因子
-- 显式左递归：$P\rightarrow P\alpha 或 \beta$转换成$P\rightarrow \beta P', P'\rightarrow \alpha P' 或 \epsilon$
-- 隐式左递归：$S\rightarrow Qc 或 c, Q\rightarrow Rb 或 b, R\rightarrow Sa 或 a$，排序为RQS，并规定排序靠后的不能生成排序靠前的，转换为$S\rightarrow Sabc 或 abc 或 bc 或 c$显式左递归，再用显式左递归方法转换成$S\rightarrow abcS' 或 bcS' 或 cS', S'\rightarrow abcS' 或 \epsilon$。注意这里Q和R没有用，它们只用来生成S，所以不用表示
-- 左公因子：$P\rightarrow \alpha A_1或\alpha A_2 或 ... 或 \alpha A_n 或 \beta_1 或 \beta_2 或 ... 或 \beta_n$转换为$P\rightarrow \alpha A 或 \beta_1 或 \beta_2 或 ... 或 \beta_n, A\rightarrow A_1 或 A_2 或 ... 或 A_n$
+- 显式左递归：$P\rightarrow P\alpha|\beta$转换成$P\rightarrow \beta P', P'\rightarrow \alpha P'|\epsilon$
+- 隐式左递归：$S\rightarrow Qc|c, Q\rightarrow Rb|b, R\rightarrow Sa|a$，排序为RQS，并规定排序靠后的不能生成排序靠前的，转换为$S\rightarrow Sabc|abc|bc|c$显式左递归，再用显式左递归方法转换成$S\rightarrow abcS'|bcS'|cS', S'\rightarrow abcS'|\epsilon$。注意这里Q和R没有用，它们只用来生成S，所以不用表示
+- 左公因子：$P\rightarrow \alpha A_1|\alpha A_2|...|\alpha A_n|\beta_1|\beta_2|...|\beta_n$转换为$P\rightarrow \alpha A|\beta_1|\beta_2|...|\beta_n, A\rightarrow A_1|A_2|...|A_n$
 
 ### 4.1.2 步骤2：计算first和follow集合
 - first集合(初始化为空)：
@@ -146,7 +146,7 @@ mathjax: true
 ### 4.1.5 二义文法处理
 看具体语义进行取舍，消除二义文法。
 
-例如文法：$G[S]:S\rightarrow if\text{ } b \text{ }then \text{ }SA 或 s, A\rightarrow else S 或 \epsilon$
+例如文法：$G[S]:S\rightarrow if\text{ } b \text{ }then \text{ }SA|s, A\rightarrow else S|\epsilon$
 ![alt text](http://puyuanz.github.io/images/complier/image-10.png)
 显然这里S可以表示一个if语句也可以是if-else语句，那么A在遇到else是一定是要和最近的S匹配，所以只要有A遇到else就用产生式$A\rightarrow else S$匹配$if\text{ } b \text{ }then \text{ }SA$中的$S$而不是转为$\epsilon$将这个else与$S\rightarrow if\text{ } b \text{ }then \text{ }SA$左侧的S匹配
 
