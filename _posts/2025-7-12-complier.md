@@ -63,7 +63,7 @@ mathjax: true
 一个文法$G$是一个四元式$(V_N,V_T,P,S)$：
 - $V_N$是一个非空有限集合，它的每个元素称为非终结符号
 - $V_T$是一个非空有限集合，它的每个元素称为终结符号，$V_T\cap V_N=\emptyset$
-- P是一个产生式集合，每个产生式的形式是$\alpha \rightarrow \beta$，其中$\alpha \in (V_T\cup V_N)^*V_N(V_T\cup V_N)^\* $,  $\beta \in (V_T\cup V_N)^\*$
+- P是一个产生式集合，每个产生式的形式是$\alpha \rightarrow \beta$，其中$\alpha \in (V_T\cup V_N)^*V_N(V_T\cup V_N)^* , \beta \in (V_T\cup V_N)^*$
 - S是一个非终结符号，称为开始符号，其至少在某个产生式左部出现一次
 
 ### 2.1.2 推导和归约
