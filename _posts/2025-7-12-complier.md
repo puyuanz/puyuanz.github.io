@@ -115,7 +115,7 @@ mathjax: true
 ![alt text](http://puyuanz.github.io/images/complier/image-8.png)
 ![alt text](http://puyuanz.github.io/images/complier/image-9.png)
 ## 3.4 词法分析器的实现
-见[1词法分析](http://github.com/puyuanz/)，包含代码以及总结文档
+见[1词法分析](https://github.com/puyuanz/SDUcomplier_experiment/tree/main/1%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90)，包含代码以及总结文档
 # 4 语法分析
 ## 4.1 LL(1)分析
 ### 4.1.1 步骤1：消除左递归与左公因子
@@ -233,7 +233,7 @@ $$b=f(c_1,c_2,...,c_k)$$
   
   且产生式右部符号的继承属性必须在这个符号之前的动作中计算出来。综合属性必须在它所引用的所有属性都计算出来以后才能计算(放在右边末尾)
   例如：
-  ![alt text](http://puyuanz.github.io/images/complier/image-15.png)
+  ![alt text](https://github.com/puyuanz/SDUcomplier_experiment/tree/main/2%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90)
 
 ## 5.2 C语言的语法制导翻译与中间代码生成实现
 见[2语法制导翻译与中间代码生成实现](http://github/)
@@ -262,4 +262,4 @@ TreeNode fun(TreeNode * node) {
 
 注意这里画DAG可能会出现左子树出现在空间的右边，要注意那个根节点延申的那个分支到底在根节点的哪边。
 
-目标代码生成代码见[3x86目标代码生成](http)
+目标代码生成代码见[3x86目标代码生成]([http](https://github.com/puyuanz/SDUcomplier_experiment/tree/main/3x86%E7%9B%AE%E6%A0%87%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90))
