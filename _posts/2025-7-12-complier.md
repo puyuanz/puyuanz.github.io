@@ -5,6 +5,7 @@ date:   2025-7-12
 tags: [course]
 comments: true
 author: Puyuan Zhang
+mathjax: true
 ---
 
 # 编译器原理笔记
@@ -114,7 +115,7 @@ author: Puyuan Zhang
 ![alt text](http://puyuanz.github.io/images/complier/image-8.png)
 ![alt text](http://puyuanz.github.io/images/complier/image-9.png)
 ## 3.4 词法分析器的实现
-见[词法分析](http://github.com/puyuanz/)，包含代码以及总结文档
+见[1词法分析](http://github.com/puyuanz/)，包含代码以及总结文档
 # 4 语法分析
 ## 4.1 LL(1)分析
 ### 4.1.1 步骤1：消除左递归与左公因子
@@ -235,14 +236,14 @@ $$b=f(c_1,c_2,...,c_k)$$
   ![alt text](http://puyuanz.github.io/images/complier/image-15.png)
 
 ## 5.2 C语言的语法制导翻译与中间代码生成实现
-见[语法制导翻译与中间代码生成实现](http://github/)
+见[2语法制导翻译与中间代码生成实现](http://github/)
 
 # 6 中间代码优化
 这里主要为了删除公共子表达式、复写传播、删除无用赋值，代码外提、强度削弱
 用特定的DAG优化算法来构造DAG，主要点有：
 - 如果存在的有值的结点就在这个结点上直接附上该变量(主要解决公共子表达式问题)
 - 最后一些不用的临时变量结点可以删除
-- 然后那些没有变量的有父节点的结点通过$$1或者$$2的形式保存到临时寄存器中。
+- 然后那些没有变量的有父节点的结点通过\$\$1或者\$\$2的形式保存到临时寄存器中。
 构造完寄存器，就按照节点顺序生成对应代码。让每个变量都成为它最后应该的值
 
 # 7 目标代码生成
